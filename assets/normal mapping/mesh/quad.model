@@ -1,0 +1,8 @@
+mesh: "/assets/normal mapping/mesh/quad.glb"
+material: "/assets/normal mapping/material/normal_mapping.material"
+textures: "/assets/normal mapping/textures/brickwall.jpg"
+textures: "/assets/normal mapping/textures/brickwall_normal.jpg"
+skeleton: ""
+animations: ""
+default_animation: ""
+name: "unnamed"

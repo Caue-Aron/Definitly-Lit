@@ -1,0 +1,7 @@
+mesh: "/assets/light source/2D/mesh/light_source_quad.glb"
+material: "/assets/light source/2D/material/light_source.material"
+textures: "/assets/light source/2D/material/lamp.png"
+skeleton: ""
+animations: ""
+default_animation: ""
+name: "unnamed"

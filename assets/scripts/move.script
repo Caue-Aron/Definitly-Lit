@@ -1,0 +1,12 @@
+go.property("speed", 10.0)
+go.property('active', true)
+
+function update(self, dt)
+  if self.active then
+    local oldpos = go.get_position()
+    local t = os.clock()
+    local xvar = t * self.speed
+
+    go.set('.', 'position', vmath.vector3(math.cos(xvar), oldpos.y, oldpos.z))
+  end
+end

@@ -1,0 +1,6 @@
+mesh: "/rendercam/cam_mesh.glb"
+material: "/rendercam/rendercam.material"
+skeleton: ""
+animations: ""
+default_animation: ""
+name: "unnamed"

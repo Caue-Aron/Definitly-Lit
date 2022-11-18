@@ -1,0 +1,7 @@
+mesh: "/assets/house/models/house.glb"
+material: "/assets/house/materials/house.material"
+textures: "/assets/house/textures/wood.png"
+skeleton: ""
+animations: ""
+default_animation: ""
+name: "unnamed"

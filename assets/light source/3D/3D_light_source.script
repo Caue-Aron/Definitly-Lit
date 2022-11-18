@@ -1,0 +1,14 @@
+lights = require 'assets.light source.lights_mod'
+
+go.property('color', vmath.vector4(1, 1, 1, 1))
+go.property('lit', true)
+
+function init(self)
+  if not self.lit then
+    msg.post('.', 'disable')
+    self.color.w = 0
+  end
+
+  go.set("#small_cube", "tint", vmath.vector4(self.color.x, self.color.y, self.color.z, 1.0))
+  lights:new_source(go.get_id())
+end

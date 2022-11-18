@@ -1,0 +1,44 @@
+#define LIGHT_COUNT 8
+
+attribute highp   vec4 position;
+attribute mediump vec2 texcoord0;
+attribute mediump vec3 normal;
+attribute mediump vec3 tangent;
+
+uniform mediump mat4 mtx_worldview;
+uniform mediump mat4 mtx_model;
+uniform mediump mat4 mtx_proj;
+
+varying highp   vec3 world_pos;
+varying mediump vec3 var_normal;
+varying mediump vec3 var_light_pos[LIGHT_COUNT];
+varying mediump vec4 var_light_color[LIGHT_COUNT];
+varying mediump vec2 var_texcoord0;
+
+uniform mediump vec4 light_pos[LIGHT_COUNT];
+uniform mediump vec4 light_color[LIGHT_COUNT];
+
+
+void main()
+{
+    vec4 p = mtx_model * vec4(position.xyz, 1.0);
+
+    vec3 T = normalize(vec3(mtx_model * vec4(tangent,   0.0)));
+    vec3 N = normalize(vec3(mtx_model * vec4(normal,    0.0)));
+    vec3 B = cross(N, T);
+
+    mat3 TBN = mat3(T, B, N);
+    TBN = transpose(TBN);
+
+    for(int i = 0; i < LIGHT_COUNT; i++)
+        if(light_color[i].w != 0)
+            var_light_pos[i] = TBN * light_pos[i].xyz;
+    
+    var_light_color = light_color;
+
+    var_texcoord0 = texcoord0;
+    var_normal = TBN * N;
+    world_pos = TBN * p.xyz;
+    gl_Position = mtx_proj * mtx_worldview * p;
+}
+

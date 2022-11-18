@@ -1,0 +1,15 @@
+name: "light_source_info"
+tags: "light_source_info"
+vertex_program: "/assets/light source/2D/gui/material/light_text.vp"
+fragment_program: "/assets/light source/2D/gui/material/light_text.fp"
+vertex_space: VERTEX_SPACE_WORLD
+vertex_constants {
+  name: "view_proj"
+  type: CONSTANT_TYPE_VIEWPROJ
+  value {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+}

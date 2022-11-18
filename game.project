@@ -1,0 +1,20 @@
+[bootstrap]
+main_collection = /main/2d light.collectionc
+render = /rendercam/rendercam.renderc
+
+[script]
+shared_state = 1
+
+[display]
+width = 1200
+height = 640
+
+[android]
+input_method = HiddenInputField
+
+[project]
+title = Lighting
+
+[physics]
+type = 3D
+

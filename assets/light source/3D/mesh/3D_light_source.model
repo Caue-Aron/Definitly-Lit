@@ -1,0 +1,6 @@
+mesh: "/assets/light source/3D/mesh/3D_lamp.glb"
+material: "/assets/light source/3D/material/3D_light_source.material"
+skeleton: ""
+animations: ""
+default_animation: ""
+name: "unnamed"

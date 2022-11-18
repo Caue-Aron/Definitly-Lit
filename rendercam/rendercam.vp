@@ -1,0 +1,20 @@
+attribute highp vec4 position;
+attribute mediump vec3 normal;
+
+uniform mediump mat4 mtx_worldview;
+uniform mediump mat4 mtx_view;
+uniform mediump mat4 mtx_proj;
+uniform mediump mat4 mtx_normal;
+uniform vec4 light_dir;
+
+varying mediump vec3 var_normal;
+varying vec3 var_light_dir;
+
+
+void main()
+{
+    var_light_dir = -normalize(vec4(mat3(mtx_view) * light_dir.xyz, 1.0)).xyz;
+    var_normal = normalize((mtx_normal * vec4(normal, 0.0)).xyz);
+    gl_Position = mtx_proj * mtx_worldview * vec4(position.xyz, 1.0);
+}
+

@@ -1,0 +1,46 @@
+lights = require 'assets.light source.lights_mod'
+
+go.property('default_configurations', false)
+-- go.property('cel_shading', false) discarted
+go.property('multiple_lights', true)
+go.property('tint', vmath.vector4(1, 1, 1, 1))
+go.property("light_direction", vmath.vector3(0, -1, 0))
+go.property("color_light_direction", vmath.vector4(1, 1, 1, 1))
+
+function bool_to_number(v)
+  return v and 1 or 0
+end
+
+local function init_light_options(self, mesh)
+  if(not self.default_configurations) then
+    go.set(mesh, "light_options", vmath.vector4(bool_to_number(self.multiple_lights), 0, 0, 0))
+    
+    go.set(mesh, "tint", self.tint)
+
+    local ldir = self.light_direction
+    go.set(mesh, "light_dir", vmath.vector4(ldir.x, ldir.y, ldir.z, 1))
+    go.set(mesh, "light_dir_color", self.color_light_direction)
+  end
+end
+
+function init(self)
+  init_light_options(self, '#mBigCube')
+  -- pprint(lights.sources)
+end
+
+local function lights_update(lights, mesh)
+  local k = 1
+  for _, light_source in pairs(lights.sources) do
+    local light_color = light_source.color
+    go.set(mesh, "light_color", vmath.vector4(light_color.x, light_color.y, light_color.z, light_color.w), {index = k})
+
+    local light_pos = light_source.position
+    go.set(mesh, "light_pos", vmath.vector4(light_pos.x, light_pos.y, light_pos.z, 1.0), {index = k})
+
+    k = k + 1
+  end
+end
+
+function update(self, dt)
+  lights_update(lights, '#mBigCube')
+end

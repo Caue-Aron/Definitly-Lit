@@ -1,0 +1,30 @@
+local rendercam = require 'rendercam.rendercam'
+
+function init(self)
+  self.box = gui.get_node('box')
+  self.text = gui.get_node('text')
+end
+
+function update(self, dt)
+  local adjust = gui.get_adjust_mode(self.box)
+  local x, y = rendercam.world_to_screen(lights.sources[self.lamp_go_id].position, adjust, true)
+  x, y = rendercam.screen_to_gui(x, y, adjust)
+
+  maxx, maxy = window.get_size()
+
+  -- if self.lamp_go_id == hash'/lamp1' then
+  --   print(maxx, x, maxy, y)
+  -- end
+
+  if (x < maxx and x > 0) and (y < maxy and y > 0) then
+    gui.set_position(self.box, vmath.vector3(x, y, 1))
+  end
+end
+
+function on_message(self, message_id, message)
+  if message_id == MSG_LIGHT_SOURCE_ID then
+    self.lamp_go_id = message.light_source_id
+    self.lamp_id_str = string.gsub(tostring(self.lamp_go_id), "hash: ", "")
+    gui.set_text(self.text, self.lamp_id_str)
+  end
+end
