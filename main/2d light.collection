@@ -166,7 +166,7 @@ embedded_instances {
   "  }\n"
   "}\n"
   "components {\n"
-  "  id: \"mBigCube\"\n"
+  "  id: \"lit_mesh\"\n"
   "  component: \"/assets/normal mapping/mesh/quad.model\"\n"
   "  position {\n"
   "    x: 0.0\n"

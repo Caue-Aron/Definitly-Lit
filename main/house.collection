@@ -112,7 +112,7 @@ scale_along_z: 0
 embedded_instances {
   id: "big_cube"
   data: "components {\n"
-  "  id: \"mBigCube\"\n"
+  "  id: \"lit_mesh\"\n"
   "  component: \"/assets/house/models/house.model\"\n"
   "  position {\n"
   "    x: 0.0\n"

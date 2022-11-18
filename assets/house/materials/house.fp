@@ -26,6 +26,7 @@ float cel_shading_calculation(float diff, vec4 cel_shading);
 void main()
 {
     vec3 result;
+
     
     // light_options.x tells if the mesh uses a single ambient light source or multiple light sources
     if(light_options.x == 1)

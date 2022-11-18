@@ -24,7 +24,7 @@ local function init_light_options(self, mesh)
 end
 
 function init(self)
-  init_light_options(self, '#mBigCube')
+  init_light_options(self, '#lit_mesh')
   -- pprint(lights.sources)
 end
 
@@ -42,5 +42,5 @@ local function lights_update(lights, mesh)
 end
 
 function update(self, dt)
-  lights_update(lights, '#mBigCube')
+  lights_update(lights, '#lit_mesh')
 end

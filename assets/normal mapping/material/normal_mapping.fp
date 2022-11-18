@@ -8,6 +8,9 @@ varying mediump vec4 var_light_color[LIGHT_COUNT];
 varying mediump vec3 var_normal;
 
 uniform vec4 tint;
+uniform vec4 light_options;
+uniform vec4 light_dir;
+uniform vec4 light_dir_color;
 uniform vec4 math_vars;
 uniform lowp sampler2D tex0;
 uniform lowp sampler2D normal_map;
@@ -16,6 +19,12 @@ vec3 light_point_calculation(vec3 light_color, vec3 light_pos, vec3 normal, vec3
 
 void main()
 {
+    // these variables are here just so it wont cause an error in runtime, due to the script for normal map and regular lighting being the same
+    float i = light_options.x;
+    i = light_dir.x;
+    i = light_dir_color.x;
+
+
     vec3 result;
     for(int i = 0; i < LIGHT_COUNT; i++)
         if(var_light_color[i].w != 0)
